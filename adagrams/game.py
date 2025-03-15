@@ -45,6 +45,14 @@ def create_a_pile_of_letters():
 
     return pile_of_unpacked_letters
 
+# returns how many times item appears in array
+def count_item_repetition_in_array(item_to_count, array):
+    count = 0
+    for item in array:
+        if item == item_to_count:
+            count += 1
+    return count
+
 # MAIN LOGIC
 # draw 10 letters from the pile randomly, remove chosen letter from pile
 def draw_letters():
@@ -58,7 +66,12 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    pass
+    word = word.upper()
+    for letter in word:
+        if (count_item_repetition_in_array(letter, word) != 
+            count_item_repetition_in_array(letter, letter_bank)):
+            return False
+    return True
 
 def score_word(word):
     pass
