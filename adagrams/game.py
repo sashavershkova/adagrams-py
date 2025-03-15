@@ -1,6 +1,6 @@
 import random
 
-# constants
+# CONSTANTS
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -28,6 +28,16 @@ LETTER_POOL = {
     'X': 1, 
     'Y': 2, 
     'Z': 1
+}
+
+SCORE_CHART = {
+    ("A", "E", "I", "O", "U", "L", "N", "R", "S", "T"): 1,
+    ("D", "G"): 2,
+    ("B", "C", "M", "P"): 3,
+    ("F", "H", "V", "W", "Y"): 4,
+    ("K",): 5,
+    ("J", "X"): 8,
+    ("Q", "Z"): 10
 }
 
 # HELPER FUNCTIONS
@@ -74,7 +84,19 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    pass
+    word = word.upper()
+    word_score = 0
+
+    for letter in word:
+        for letters, score in SCORE_CHART.items():
+            if letter in letters:
+                word_score += score
+
+    if len(word) >= 7:
+        word_score += 8
+
+    return word_score
+
 
 def get_highest_word_score(word_list):
     pass
