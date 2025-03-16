@@ -63,6 +63,34 @@ def count_item_repetition_in_array(item_to_count, array):
             count += 1
     return count
 
+# returns highest number in array of numbers
+def find_highest_number_in_array_of_numbers(array):
+    highest_number = 0
+    for number in array:
+        if number > highest_number:
+            highest_number = number
+    return highest_number
+
+# finds duplicates in array of numbers and returns list of indexes
+def find_duplicate_numbers_in_an_array_return_indexes_list(array, number_to_search):
+    indexes_list = []
+
+    for index in range(len(array)):
+        if array[index] == number_to_search:
+            indexes_list.append(index)
+    
+    if len(indexes_list) > 1:
+        return indexes_list
+
+# finds minimum value in array    
+def find_min_in_array(array):
+    min_value = array[0]
+    for value in array:
+        if value < min_value:
+            min_value = value
+    return min_value
+
+
 # MAIN LOGIC
 # draw 10 letters from the pile randomly, remove chosen letter from pile
 def draw_letters():
@@ -97,6 +125,37 @@ def score_word(word):
 
     return word_score
 
-
 def get_highest_word_score(word_list):
-    pass
+    # create a list of scores corresponding to the word_list
+    scores_list = []
+
+    for word in word_list:
+        scores_list.append(score_word(word))
+
+    # find the highest score in scores_list
+    highest_score = find_highest_number_in_array_of_numbers(scores_list)
+
+    # make a list that contains only words with highest score (one word or multiple)
+    # make a corresponding list that contains lengths of these words
+    highest_score_words = []
+    highest_score_words_len = []
+
+    for index in range(len(scores_list)):
+        if scores_list[index] == highest_score:
+            highest_score_words.append(word_list[index])
+            highest_score_words_len.append(len(word_list[index]))
+    
+    # set logic for choosing winning word from the list of words with highest scores
+    if len(highest_score_words) == 1:
+        winning_word = highest_score_words[0]
+    else:
+        if 10 in highest_score_words_len:
+            winning_word = highest_score_words[highest_score_words_len.index(10)]
+        else:
+            win_word_len = find_min_in_array(highest_score_words_len)
+            win_word_index = highest_score_words_len.index(win_word_len)
+            winning_word = highest_score_words[win_word_index]
+
+    winning_word_tuple = (winning_word, highest_score)
+
+    return winning_word_tuple
