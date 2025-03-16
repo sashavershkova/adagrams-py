@@ -1,6 +1,7 @@
 import random
 
 # CONSTANTS
+
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -41,7 +42,9 @@ SCORE_CHART = {
 }
 
 # HELPER FUNCTIONS
-# creates a pile of all available letters (a list) for future correct distribution probability purposes
+
+# creates a pile of all available letters (list)
+# for correct distribution probability purposes
 def create_a_pile_of_letters():
     pile_of_packed_letters = []
     string_pile = ""
@@ -55,7 +58,7 @@ def create_a_pile_of_letters():
 
     return pile_of_unpacked_letters
 
-# returns how many times item appears in array
+# counts how many times item appears in array
 def count_item_repetition_in_array(item_to_count, array):
     count = 0
     for item in array:
@@ -63,24 +66,13 @@ def count_item_repetition_in_array(item_to_count, array):
             count += 1
     return count
 
-# returns highest number in array of numbers
+# finds highest number in array of numbers
 def find_highest_number_in_array_of_numbers(array):
     highest_number = 0
     for number in array:
         if number > highest_number:
             highest_number = number
     return highest_number
-
-# finds duplicates in array of numbers and returns list of indexes
-def find_duplicate_numbers_in_an_array_return_indexes_list(array, number_to_search):
-    indexes_list = []
-
-    for index in range(len(array)):
-        if array[index] == number_to_search:
-            indexes_list.append(index)
-    
-    if len(indexes_list) > 1:
-        return indexes_list
 
 # finds minimum value in array    
 def find_min_in_array(array):
