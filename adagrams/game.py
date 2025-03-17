@@ -41,6 +41,7 @@ SCORE_CHART = {
     ("Q", "Z"): 10
 }
 
+
 # HELPER FUNCTIONS
 
 # creates a pile of all available letters (list)
@@ -67,14 +68,14 @@ def count_item_repetition_in_array(item_to_count, array):
     return count
 
 # finds highest number in array of numbers
-def find_highest_number_in_array_of_numbers(array):
+def find_highest_number_in_array(array):
     highest_number = 0
     for number in array:
         if number > highest_number:
             highest_number = number
     return highest_number
 
-# finds minimum value in array    
+# finds minimum number in array    
 def find_min_in_array(array):
     min_value = array[0]
     for value in array:
@@ -84,13 +85,15 @@ def find_min_in_array(array):
 
 
 # MAIN LOGIC
-# draw 10 letters from the pile randomly, remove chosen letter from pile
+
+# draw 10 letters from the pile randomly
+# remove chosen letter from pile
 def draw_letters():
-    pile_of_letters = create_a_pile_of_letters()
+    letters_pile = create_a_pile_of_letters()
     hand = []
 
     for letter in range(10):
-        letter = pile_of_letters.pop(random.randint(0, len(pile_of_letters))-1)
+        letter = letters_pile.pop(random.randint(0, len(letters_pile))-1)
         hand.append(letter)
     
     return hand
@@ -125,10 +128,10 @@ def get_highest_word_score(word_list):
         scores_list.append(score_word(word))
 
     # find the highest score in scores_list
-    highest_score = find_highest_number_in_array_of_numbers(scores_list)
+    highest_score = find_highest_number_in_array(scores_list)
 
-    # make a list that contains only words with highest score (one word or multiple)
-    # make a corresponding list that contains lengths of these words
+    # make a list that contains only words with highest score
+    # make a corresponding list that contains len() of these words
     highest_score_words = []
     highest_score_words_len = []
 
@@ -137,17 +140,18 @@ def get_highest_word_score(word_list):
             highest_score_words.append(word_list[index])
             highest_score_words_len.append(len(word_list[index]))
     
-    # set logic for choosing winning word from the list of words with highest scores
+    # set logic for choosing winning word 
+    # from the list of words with highest scores
     if len(highest_score_words) == 1:
-        winning_word = highest_score_words[0]
+        win_word = highest_score_words[0]
     else:
         if 10 in highest_score_words_len:
-            winning_word = highest_score_words[highest_score_words_len.index(10)]
+            win_word = highest_score_words[highest_score_words_len.index(10)]
         else:
             win_word_len = find_min_in_array(highest_score_words_len)
             win_word_index = highest_score_words_len.index(win_word_len)
-            winning_word = highest_score_words[win_word_index]
+            win_word = highest_score_words[win_word_index]
 
-    winning_word_tuple = (winning_word, highest_score)
+    win_word_tuple = (win_word, highest_score)
 
-    return winning_word_tuple
+    return win_word_tuple
