@@ -4,16 +4,11 @@ from constants import LETTER_POOL
 # creates a pile of all available letters (list)
 # for correct distribution probability purposes
 def create_a_pile_of_letters():
-    pile_of_packed_letters = []
-    string_pile = ""
     pile_of_unpacked_letters = []
 
     for letter, number in LETTER_POOL.items():
-        pile_of_packed_letters.append(letter * number)
+        pile_of_unpacked_letters.extend(letter * number)
     
-    string_pile = "".join(pile_of_packed_letters)
-    pile_of_unpacked_letters = list(string_pile)
-
     return pile_of_unpacked_letters
 
 # counts how many times item appears in array
