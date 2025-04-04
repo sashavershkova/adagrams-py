@@ -28,9 +28,8 @@ def score_word(word):
     word = word.upper()
     word_score = 0
 
-    for char in word:
-        for letter, score in SCORE_CHART.items():
-            word_score += score
+    for letter in word:
+        word_score += SCORE_CHART[letter]
 
     if len(word) >= 7:
         word_score += 8
