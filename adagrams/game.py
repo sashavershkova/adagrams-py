@@ -68,6 +68,4 @@ def get_highest_word_score(word_list):
             win_word_index = highest_score_words_len.index(win_word_len)
             win_word = highest_score_words[win_word_index]
 
-    win_word_tuple = (win_word, highest_score)
-
-    return win_word_tuple
+    return win_word, highest_score
