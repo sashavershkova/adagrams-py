@@ -31,7 +31,7 @@ def score_word(word):
     for letter in word:
         word_score += SCORE_CHART[letter]
 
-    if len(word) >= 7:
+    if 7 <= len(word) <= 10:
         word_score += 8
 
     return word_score
