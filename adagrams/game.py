@@ -11,8 +11,14 @@ def draw_letters():
     hand = []
 
     for _ in range(HAND_SIZE):
-        letter = letters_pile.pop(random.randint(0, len(letters_pile))-1)
-        hand.append(letter)
+        # find random index
+        random_index = random.randint(0, len(letters_pile)-1)
+        # swap letter at this random index with the last one in list
+        last_letter = letters_pile[-1]
+        letters_pile[-1] = letters_pile[random_index]
+        letters_pile[random_index] = last_letter
+        # add our new last letter to hand and remove it from our list
+        hand.append(letters_pile.pop())
     
     return hand
 
