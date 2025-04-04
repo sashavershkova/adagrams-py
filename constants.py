@@ -38,3 +38,5 @@ SCORE_CHART = {
     "J": 8, "X": 8,
     "Q": 10, "Z": 10
 }
+
+HAND_SIZE = 10

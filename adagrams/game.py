@@ -1,5 +1,5 @@
 import random
-from constants import SCORE_CHART
+from constants import SCORE_CHART, HAND_SIZE
 from helper_functions import create_a_pile_of_letters, count_item_repetition_in_array,\
     find_highest_number_in_array, find_min_in_array
 
@@ -10,7 +10,7 @@ def draw_letters():
     letters_pile = create_a_pile_of_letters()
     hand = []
 
-    for letter in range(10):
+    for letter in range(HAND_SIZE):
         letter = letters_pile.pop(random.randint(0, len(letters_pile))-1)
         hand.append(letter)
     
