@@ -10,7 +10,7 @@ def draw_letters():
     letters_pile = create_a_pile_of_letters()
     hand = []
 
-    for letter in range(HAND_SIZE):
+    for _ in range(HAND_SIZE):
         letter = letters_pile.pop(random.randint(0, len(letters_pile))-1)
         hand.append(letter)
     
